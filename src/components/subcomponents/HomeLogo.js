@@ -12,5 +12,3 @@ const HomeLogo = () => {
         </div>
     )
 }
-
-export default HomeLogo;
