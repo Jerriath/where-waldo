@@ -7,7 +7,7 @@ const LeaderboardDiv = () => {
 
 
     return (
-        <div classNmae="leaderboardDiv" >
+        <div className="leaderboardDiv" >
 
         </div>
     )
