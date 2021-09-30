@@ -124,4 +124,5 @@
 .gameLevel {
     width: 100%;
     height: auto;
+    cursor: url('../assets/misc/custom-cursor.svg') 50 50, auto;
 }

@@ -17,6 +17,7 @@ const MapSelect = () => {
         <div className="home">
             <div className="mapSelect" >
                 <Link to={{
+                    //The to attribute for the link tag is used to store the level image in order to update the image source of the /Game page
                     pathname: "/Game",
                     state: {
                         level: Beach

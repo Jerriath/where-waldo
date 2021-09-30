@@ -9,7 +9,7 @@ import Woof from "../../assets/characters/woof.png";
 
 
 const MapSelection = (props) => {
-
+    //All maps include every character, so every character will be displayed in the mapLegend div of every map
     const characterArray = [Waldo, Wenda, Wizard, Odlaw, Woof];
 
 
