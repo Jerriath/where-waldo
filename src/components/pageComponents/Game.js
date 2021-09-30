@@ -1,14 +1,16 @@
+import { useLocation } from "react-router-dom";
+import Beach from "../../assets/maps/beach.jpg";
 
 
+const Game = () => {
 
-
-const Game = (props) => {
-
-
+    const location = useLocation();
+    const level = location.state?.level;
+    console.log(level);
 
     return (
         <div className="Game" >
-
+            <img alt="Map" src={level ? level:Beach} />
         </div>
     )
 }

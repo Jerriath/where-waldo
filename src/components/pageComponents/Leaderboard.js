@@ -7,8 +7,8 @@ const Leaderboard = () => {
 
 
     return (
-        <div classNmae="leaderboard" >
-
+        <div className="leaderboard" >
+            
         </div>
     )
 }

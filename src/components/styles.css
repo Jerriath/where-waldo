@@ -1,15 +1,5 @@
 /*Home page styling */
 
-.logo {
-    width: 15%;
-    height: auto;
-}
-
-.logoImg {
-    height: 100px;
-    width: auto;
-}
-
 .homeLogo {
     display: flex;
     flex-direction: row;
@@ -17,12 +7,22 @@
     justify-content: center;
 }
 
+.logo {
+    width: auto;
+    height: 15vh;
+}
+
+.logoImg {
+    height: 100px;
+    width: auto;
+}
+
 .mapSelect {
     display: grid;
     width: 50%;
     grid-gap: 1.5rem;
     gap: 1.5rem;
-    grid-column-gap: 5rem;
+    grid-column-gap: 9rem;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     margin: auto;
 }
@@ -30,17 +30,87 @@
 .mapSelection {
     display: flex;
     flex-direction: column;
+    min-width: 350px;
     width: 100%;
     height: auto;
+    transition: box-shadow 0.2s;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.mapSelection:hover {
+    box-shadow: 3px 3px 3px 3px darkgrey;
+}
+
+.mapDetails {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1% 2%;
 }
 
 .mapName {
     position: relative;
     margin: 0;
+    margin-top: 1%;
     text-decoration: underline;
+}
+
+.legendImg {
+    max-width: 1.75em;
+    height: auto;
 }
 
 .cardImg {
     width: 100%;
     height: auto;
+}
+
+.leaderboardDiv {
+    width: 70%;
+    background-color: rgba(167, 35, 35, 0.767);
+    height: 20vh;
+    margin: 2% auto;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.leaderboardMsg {
+    font-size: 3em;
+    padding: 4% 10%;
+    color: rgb(226, 226, 226);
+    margin: 0;
+    text-align: center;
+    width: 80%;
+}
+
+.leaderboardCaption {
+    font-size: 2em;
+    width: 80%;
+    text-align: center;
+    padding: 0 10%;
+    margin: 0;
+    color: rgb(36, 36, 36);
+}
+
+.leaderboardMsgDiv {
+    width: 60%;
+}
+
+.leaderboardBtn {
+    font-size: 1.5em;
+    width: 8em;
+    height: 2em;
+    background: rgb(139, 139, 236);
+    border-radius: 10px;
+    border: none;
+    box-shadow: 2px 2px 2px rgb(68, 68, 68);
+    transition: box-shadow 0.2s;
+    margin: 35% 50%;
+    color: rgb(36, 36, 36);
+}
+
+.leaderboardBtn:hover {
+    box-shadow: 3px 3px 3px black;
 }

@@ -15,11 +15,14 @@ const MapSelection = (props) => {
 
     return (
         <div className="mapSelection" >
-            <h3 className="mapName">{props.mapName}</h3>
             <img className="cardImg" src={props.mapSrc} alt={props.mapName} />
-            <div className="mapLegend">
-                {characterArray.map((character) => {return <img src={character} alt="character" key={uniqid()}/>})}
+            <div className="mapDetails">
+                <h3 className="mapName">{props.mapName}</h3>
+                <div className="mapLegend">
+                    {characterArray.map((character) => {return <img src={character} className="legendImg" alt="character" key={uniqid()}/>})}
+                </div>
             </div>
+            
         </div>
     )
 }
