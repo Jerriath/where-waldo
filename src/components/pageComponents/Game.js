@@ -10,7 +10,7 @@ const Game = () => {
 
     return (
         <div className="Game" >
-            <img alt="Map" src={level ? level:Beach} />
+            <img className="gameLevel" alt="Map" src={level ? level:Beach} />
         </div>
     )
 }
