@@ -17,8 +17,8 @@
       }
     </style>
   </defs>
-  <rect width="50" height="50" class="cls-1" x="25" y="25" r="48"/>
-  <rect width="50" height="50" id="circle_border" data-name="square-border" class="cls-2" x="25" y="25" r="46"/>
+  <rect width="50" height="50" class="cls-1" x="25" y="25"/>
+  <rect width="50" height="50" id="circle_border" data-name="square-border" class="cls-2" x="25" y="25"/>
   <circle class="cls-3" cx="50" cy="50" r="5"/>
   <circle class="cls-3" cx="25" cy="25" r="5"/>
   <circle class="cls-3" cx="75" cy="25" r="5"/>

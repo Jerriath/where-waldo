@@ -70,7 +70,7 @@
 .leaderboardDiv {
     width: 60%;
     background-color: rgba(167, 35, 35, 0.767);
-    height: 18vh;
+    height: auto;
     margin: 2% auto;
     border-radius: 20px;
     display: flex;
@@ -120,9 +120,13 @@
 
 
 /*----Game Page Styling----*/
-
-.gameLevel {
-    width: 100%;
-    height: auto;
-    cursor: url('../assets/misc/custom-cursor.svg') 50 50, auto;
+@media (min-width: 992px) {
+    .gameLevel {
+        width: 92%;
+        height: auto;
+        cursor: url('../assets/misc/custom-cursor.svg') 50 50, auto;
+        z-index: 10;
+        margin: 0 4%;
+        margin-bottom: 5%;
+    }
 }
