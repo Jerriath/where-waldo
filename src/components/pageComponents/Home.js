@@ -20,7 +20,8 @@ const MapSelect = () => {
                     //The to attribute for the link tag is used to store the level image in order to update the image source of the /Game page
                     pathname: "/Game",
                     state: {
-                        level: Beach
+                        level: Beach,
+                        map: "beach"
                     }
                 }}>
                     <MapSelection mapSrc={Beach} mapName="Level 1:  Beach" />
@@ -28,7 +29,8 @@ const MapSelect = () => {
                 <Link to={{
                     pathname: "/Game",
                     state: {
-                        level: Carnival
+                        level: Carnival,
+                        map: "carnival"
                     }
                 }}>
                     <MapSelection mapSrc={Carnival} mapName="Level 2:  Carnival" />
@@ -36,7 +38,8 @@ const MapSelect = () => {
                 <Link to={{
                     pathname: "/Game",
                     state: {
-                        level: Snow
+                        level: Snow,
+                        map: "snow"
                     }
                 }}>
                     <MapSelection mapSrc={Snow} mapName="Level 3:  Snow" />
@@ -44,7 +47,8 @@ const MapSelect = () => {
                 <Link to={{
                     pathname: "/Game",
                     state: {
-                        level: Space
+                        level: Space,
+                        map: "space"
                     }
                 }}>
                     <MapSelection mapSrc={Space} mapName="Level 4:  Space" />

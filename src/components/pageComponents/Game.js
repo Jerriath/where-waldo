@@ -13,15 +13,16 @@ const Game = () => {
     //useLocation is used to store the map level in so that the correct level will be displayed
     const location = useLocation();
     const level = location.state?.level;
+    const map = location.state?.map;
 
 
     //useState used here to keep track of which characters have been found
     const [foundArray, setFoundArray] = useState([false, false, false, false, false]);
     const [dropdown, setDropdown] = useState(null);
 
-    const fetchAnswers = async (character) => {
+    const fetchAnswers = async (character, map) => {
         try {
-            const answerRef = doc(db, "answers/beach");
+            const answerRef = doc(db, `answers/${map}`);
             const answer = await getDoc(answerRef).then((doc) => doc.data());
             switch (character) {
                 case "Waldo" :
@@ -44,18 +45,45 @@ const Game = () => {
     }
 
 
-    const removeDropdown = async (pointsArray, character) => {
-        const answer = await fetchAnswers(character);
-        console.log(answer);
-        console.log(pointsArray);
+    const removeDropdown = async (pointsArray, character, map) => {
+        const answer = await fetchAnswers(character, map);
         const found = checkPointsArray(answer, pointsArray);
-        alert(found);
+
+        if (found) {
+            let tempFoundArray = foundArray;
+            switch (character) {
+                case "Waldo" :
+                    tempFoundArray[0] = true;
+                    setFoundArray(tempFoundArray);
+                    break;
+                case "Wenda" :
+                    tempFoundArray[1] = true;
+                    setFoundArray(tempFoundArray);
+                    break;
+                case "Wizard" :
+                    tempFoundArray[2] = true;
+                    setFoundArray(tempFoundArray);
+                    break;
+                case "Odlaw" :
+                    tempFoundArray[3] = true;
+                    setFoundArray(tempFoundArray);
+                    break;
+                case "Woof" :
+                    tempFoundArray[4] = true;
+                    setFoundArray(tempFoundArray);
+                    break;
+                default :
+                    break;
+            }
+        }
+        
+        console.log(foundArray);
         setDropdown(null);
     } //This is just here for testing rn; later this function will be the one to send the request to the backend and check the pointsArray against the answers
 
     const appendDropdown = (e) => {
         const pointsArray = createPointsArray(e);
-        setDropdown(<CharacterDropdown removeDropdown={removeDropdown.bind(this)} foundArray={foundArray} xPos={e.clientX} yPos={e.clientY} pointsArray={pointsArray} />)
+        setDropdown(<CharacterDropdown map={map} removeDropdown={removeDropdown.bind(this)} foundArray={foundArray} xPos={e.clientX} yPos={e.clientY} pointsArray={pointsArray} />)
     }
 
     return (

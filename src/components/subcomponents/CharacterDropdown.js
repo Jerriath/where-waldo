@@ -25,7 +25,7 @@ const CharacterDropdown = (props) => {
         }}>
             {characterArray.map((character, index) => {
                 if (!props.foundArray[index]) {
-                    return <CharacterSelect removeDropdown={props.removeDropdown} imgSrc={character} name={characterStrings[index]} key={uniqid()} pointsArray={props.pointsArray} />
+                    return <CharacterSelect map={props.map} removeDropdown={props.removeDropdown} imgSrc={character} name={characterStrings[index]} key={uniqid()} pointsArray={props.pointsArray} />
                 }
                 else {
                     return null;

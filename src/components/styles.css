@@ -132,14 +132,14 @@
 }
 
 .characterDropdown {
-    outline: 4px solid tan;
+    outline: 4px solid rgb(155, 96, 47);
 }
 
 .characterSelect {
     display: flex;
     flex-direction: row;
     background-color: white;
-    outline: 2px solid tan;
+    outline: 2px solid rgb(155, 96, 47);
     cursor: pointer;
     justify-content: space-between;
 }

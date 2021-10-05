@@ -5,7 +5,7 @@ import "../styles.css";
 const CharacterSelect = (props) => {
 
     const clickHandler = async () => {
-        props.removeDropdown(props.pointsArray, props.name)
+        props.removeDropdown(props.pointsArray, props.name, props.map)
     }
 
     return (
