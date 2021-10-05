@@ -7,9 +7,10 @@ import Odlaw from "../../assets/characters/odlaw.png";
 import Woof from "../../assets/characters/woof.png";
 
 
-
+//Want to pass a function for checking with backend through props; also want to pass a boolean array for which characters have not been found through props
 const CharacterDropdown = (props) => {
 
+    //Drop down will show names and sprites for the characters that have not been found
     const characterArray = [Waldo, Wenda, Wizard, Odlaw, Woof];
 
     return (

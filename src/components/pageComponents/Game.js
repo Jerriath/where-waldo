@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import Beach from "../../assets/maps/beach.jpg";
 import { createPointsArray } from "../HelperFunctions/gameFunctions";
-import { firestore } from "../../firebase-config.js";
+import { getDoc, doc } from "firebase/firestore";
+import { db } from "../../firebase-config.js";
 
 
 
@@ -16,23 +17,12 @@ const Game = () => {
     //useState used here to keep track of which characters have been found
     const [foundArray, setFoundArray] = useState([false, false, false, false, false]);
 
-    const clickHandler = async () => {
+    const clickHandler = async (e) => {
+        const pointsArray = createPointsArray(e);
         try {
-            const answersRef = firestore.collection("answers").doc("beach");
-            const answers = await answersRef.get().then((doc) => {
-                if (doc) {
-                    console.log("Retrieving answers...");
-                    return doc.data();
-                }
-                else {
-                    console.log("Error: Not sure what happened.")
-                }
-            })
-            console.log(answers.waldo);
-            console.log(answers.wedna);
-            console.log(answers.wizard);
-            console.log(answers.odlaw);
-            console.log(answers.woof);
+            const answerRef = doc(db, "answers/beach");
+            const answer = await getDoc(answerRef).then((doc) => doc.data());
+            console.log(answer);
         }
         catch(error) {
             console.log("A weird error occured. Get it away!", error);
@@ -49,3 +39,6 @@ const Game = () => {
 }
 
 export default Game;
+
+
+//Got firebase to work; answers are now stored in answer variable in the clickHandler function

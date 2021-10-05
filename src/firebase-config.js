@@ -1,5 +1,5 @@
-import firebase from "firebase/compat/app";
-import "firebase/firestore";
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
 
 
 
@@ -13,16 +13,13 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-
-console.log(firebase);
-
-const firestore = firebase.firestore();
-
-const timestamp = firebase.firestore.FieldValue.serverTimestamp();
-
-export { firestore, timestamp };
-export default firebase;
+const app = initializeApp(firebaseConfig);
 
 
-//Firestore currently does not work. Gotta fix!!!
+const db = getFirestore(app);
+
+//const timestamp = firestore.FieldValue.serverTimestamp();
+
+export { db };
+export default app;
+
