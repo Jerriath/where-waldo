@@ -13,12 +13,8 @@ export const createPointsArray = (e) => {
     pointsArray.push([xCenter - 25, yCenter + 25]);
     pointsArray.push([xCenter + 25, yCenter + 25]);
     let adjustedArray = adjustPointsArray(pointsArray, bounds);
-    console.log(adjustedArray);
     return adjustedArray;
 }
-
-
-
 //Adjusts the x and y values of the points in the array to percentage values relative to the actual image; this is to make sure the some point on the image
 //will send the same percentage coordinates to the backend no matter the clients' resolution
 const adjustPointsArray = (pointsArray, bounds) => {
@@ -33,3 +29,19 @@ const adjustPointsArray = (pointsArray, bounds) => {
     })
     return newPointsArray;
 }   
+
+
+
+//This function is used to do the checking that was described in the first comment above
+export const checkPointsArray = (bounds, pointsArray) => {
+    const xMin = bounds[0];
+    const xMax = bounds[1];
+    const yMin = bounds[2];
+    const yMax = bounds[3];
+    for (let i = 0; i < pointsArray.length; i++) {
+        if (pointsArray[i][0] >= xMin && pointsArray[i][0] <= xMax && pointsArray[i][1] >= yMin && pointsArray[i][1] <= yMax) {
+            return true;
+        }
+    }
+    return false;
+}
