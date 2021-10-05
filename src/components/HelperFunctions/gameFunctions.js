@@ -5,7 +5,6 @@
 //Basically if any point (including the center) falls between the bounds of the character (backend values), the character will be marked as found
 export const createPointsArray = (e) => {
     let bounds = document.querySelector(".gameLevel").getBoundingClientRect();
-    console.log(bounds.left + " " + bounds.right + "      " + bounds.top + " " + bounds.bottom);
     let xCenter = e.clientX;
     let yCenter = e.clientY;
     let pointsArray = [[xCenter, yCenter]]
@@ -17,6 +16,7 @@ export const createPointsArray = (e) => {
     console.log(adjustedArray);
     return adjustedArray;
 }
+
 
 
 //Adjusts the x and y values of the points in the array to percentage values relative to the actual image; this is to make sure the some point on the image

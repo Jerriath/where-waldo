@@ -130,3 +130,16 @@
         margin-bottom: 5%;
     }
 }
+
+.characterDropdown {
+    outline: 4px solid tan;
+}
+
+.characterSelect {
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    outline: 2px solid tan;
+    cursor: pointer;
+    justify-content: space-between;
+}
