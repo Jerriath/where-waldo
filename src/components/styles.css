@@ -193,3 +193,53 @@
     background-color: rgb(69, 201, 52);
     box-shadow: 5px 5px 5px black;
 }
+
+.snackbarHidden {
+    position: fixed;
+    top: -3em;
+    left: 0;
+    right: 0;
+    margin: auto;
+    font-size: 1.5em;
+    transition: all 0.2s linear;
+}
+
+.snackbarShowing {
+    position: fixed;
+    top: 0em;
+    left: 0;
+    right: 0;
+    margin: auto;
+    font-size: 1.5em;
+    transition: all 0.2s linear;
+}
+
+.snackbarFound { 
+    margin: 0 auto;
+    width: 13em;
+    height: 2em;
+    background-color: rgba(0, 182, 15, 0.8);
+    border: 1px solid rgba(0, 182, 15, 0.8);
+    border-radius: 20px;
+    box-shadow: 3px 3px 3px black;
+}
+
+.snackbarMissed {
+    margin: 0 auto;
+    width: 13em;
+    height: 2em;
+    background-color: rgba(255, 21, 21, 0.8);
+    border: 1px solid rgba(255, 21, 21, 0.8);
+    border-radius: 20px;
+    box-shadow: 3px 3px 3px black;
+}
+
+.snackbarMsg {
+    text-align: center;
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 4%;
+}

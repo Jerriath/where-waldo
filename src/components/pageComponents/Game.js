@@ -6,21 +6,29 @@ import { db } from "../../firebase-config.js";
 import Beach from "../../assets/maps/beach.jpg";
 import CharacterDropdown from "../subcomponents/gameComponents/CharacterDropdown";
 import StartGame from "../subcomponents/gameComponents/StartGame";
+import Snackbar from "../subcomponents/gameComponents/Snackbar";
 
 
 
 const Game = () => {
 
-    //useLocation is used to store the map level in so that the correct level will be displayed
+    //useLocation is used to store the map imgSrc and map name in so that the correct level will be displayed
     const location = useLocation();
     const level = location.state?.level;
     const map = location.state?.map;
 
 
-    //useState used here to keep track of which characters have been found
-    const [foundArray, setFoundArray] = useState([false, false, false, false, false]);
+    //These hooks are used in the return statement to append a component or to append null (e.g. StartGame or Snackbar; dropdown is set below)
     const [dropdown, setDropdown] = useState(null);
+    
+
+    //These hooks are used to store important variables
+    const [foundArray, setFoundArray] = useState([false, false, false, false, false]);
     const [startTime, setStartTime] = useState(0);
+    const [snackbarClass, setSnackbarClass] = useState("snackbarFound");
+    const [snackbarMsg, setSnackbarMsg] = useState("");
+    const [snackbarHolder, setSnackbarHolder] = useState("snackbarHidden");
+
 
 
 
@@ -28,10 +36,11 @@ const Game = () => {
     const setStart = (e) => {
         let time = Math.floor(e.timeStamp) / 1000;
         setStartTime(time)
-        setStartBtn(null);
+        setstartGame(null);
     }
 
-    const [startBtn, setStartBtn] = useState(<StartGame setStart={setStart.bind(this)}/>);
+    //Hook declared after setStart function because setStart is used in the hook
+    const [startGame, setstartGame] = useState(<StartGame setStart={setStart.bind(this)}/>);
 
     const getTotalTime = (e) => {
         const start = startTime;
@@ -81,27 +90,43 @@ const Game = () => {
                 case "Waldo" :
                     tempFoundArray[0] = true;
                     setFoundArray(tempFoundArray);
+                    setSnackbarMsg("You found Waldo!!!")
                     break;
                 case "Wenda" :
                     tempFoundArray[1] = true;
                     setFoundArray(tempFoundArray);
+                    setSnackbarMsg("You found Wenda!!!")
                     break;
                 case "Wizard" :
                     tempFoundArray[2] = true;
                     setFoundArray(tempFoundArray);
+                    setSnackbarMsg("You found Wizard!!!")
                     break;
                 case "Odlaw" :
                     tempFoundArray[3] = true;
                     setFoundArray(tempFoundArray);
+                    setSnackbarMsg("You found Odlaw!!!")
                     break;
                 case "Woof" :
                     tempFoundArray[4] = true;
                     setFoundArray(tempFoundArray);
+                    setSnackbarMsg("You found Woof!!!")
                     break;
                 default :
                     break;
             }
+            setSnackbarClass("snackbarFound");
         }
+        else{
+            setSnackbarClass("snackbarMissed");
+            setSnackbarMsg("Missed. Try again.")
+        }
+
+        setSnackbarHolder("snackbarShowing");
+        setTimeout(() => {
+            setSnackbarHolder("snackbarHidden");
+        }, 2000);
+
         
         setDropdown(null);
     } //This is just here for testing rn; later this function will be the one to send the request to the backend and check the pointsArray against the answers
@@ -116,7 +141,8 @@ const Game = () => {
 
     return (
         <div className="game" >
-            {startBtn}
+            <Snackbar holderClass={snackbarHolder} className={snackbarClass} msg={snackbarMsg} />
+            {startGame}
             <img className="gameLevel" alt="Map" src={level ? level:Beach} onClick={appendDropdown}/> 
             {dropdown}
         </div>
