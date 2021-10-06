@@ -5,6 +5,7 @@ import { getDoc, doc } from "firebase/firestore";
 import { db } from "../../firebase-config.js";
 import Beach from "../../assets/maps/beach.jpg";
 import CharacterDropdown from "../subcomponents/CharacterDropdown";
+import StartGame from "../subcomponents/StartGame";
 
 
 
@@ -19,7 +20,29 @@ const Game = () => {
     //useState used here to keep track of which characters have been found
     const [foundArray, setFoundArray] = useState([false, false, false, false, false]);
     const [dropdown, setDropdown] = useState(null);
+    const [startTime, setStartTime] = useState(0);
 
+
+
+    //Functions deal with calculating how long it took to find all characters
+    const setStart = (e) => {
+        let time = Math.floor(e.timeStamp) / 1000;
+        setStartTime(time)
+        setStartBtn(null);
+    }
+
+    const [startBtn, setStartBtn] = useState(<StartGame setStart={setStart.bind(this)}/>);
+
+    const getTotalTime = (e) => {
+        const start = startTime;
+        let totalTime = Math.floor(((e.timeStamp / 1000) - start) * 1000) / 1000;
+        console.log(totalTime);
+    }
+
+
+
+
+    //Function for dealing with async get request
     const fetchAnswers = async (character, map) => {
         try {
             const answerRef = doc(db, `answers/${map}`);
@@ -45,6 +68,9 @@ const Game = () => {
     }
 
 
+
+
+    //Functions that deal with the dropdown list of characters
     const removeDropdown = async (pointsArray, character, map) => {
         const answer = await fetchAnswers(character, map);
         const found = checkPointsArray(answer, pointsArray);
@@ -77,17 +103,20 @@ const Game = () => {
             }
         }
         
-        console.log(foundArray);
         setDropdown(null);
     } //This is just here for testing rn; later this function will be the one to send the request to the backend and check the pointsArray against the answers
 
     const appendDropdown = (e) => {
         const pointsArray = createPointsArray(e);
-        setDropdown(<CharacterDropdown map={map} removeDropdown={removeDropdown.bind(this)} foundArray={foundArray} xPos={e.clientX} yPos={e.clientY} pointsArray={pointsArray} />)
+        setDropdown(<CharacterDropdown getTotalTime={getTotalTime.bind(this)} map={map} removeDropdown={removeDropdown.bind(this)} foundArray={foundArray} xPos={e.clientX} yPos={e.clientY} pointsArray={pointsArray} />)
     }
 
+
+
+
     return (
-        <div className="Game" >
+        <div className="game" >
+            {startBtn}
             <img className="gameLevel" alt="Map" src={level ? level:Beach} onClick={appendDropdown}/> 
             {dropdown}
         </div>

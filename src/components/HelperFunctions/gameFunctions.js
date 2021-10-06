@@ -1,6 +1,3 @@
-
-
-
 //This function is used to create the points array that will be checked against the backend values
 //Basically if any point (including the center) falls between the bounds of the character (backend values), the character will be marked as found
 export const createPointsArray = (e) => {
@@ -32,6 +29,7 @@ const adjustPointsArray = (pointsArray, bounds) => {
 
 
 
+
 //This function is used to do the checking that was described in the first comment above
 export const checkPointsArray = (bounds, pointsArray) => {
     const xMin = bounds[0];
@@ -44,4 +42,16 @@ export const checkPointsArray = (bounds, pointsArray) => {
         }
     }
     return false;
+}
+
+
+
+
+export const checkFoundArray = (foundArray) => {
+    for (let i = 0; i< foundArray.length; i++) {
+        if (foundArray[i] === false) {
+            return false;
+        }
+    }
+    return true;
 }
