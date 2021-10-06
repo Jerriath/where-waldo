@@ -1,5 +1,5 @@
-import "../styles.css";
-import { checkFoundArray } from "../HelperFunctions/gameFunctions";
+import "../../styles.css";
+import { checkFoundArray } from "../../HelperFunctions/gameFunctions";
 
 
 const CharacterSelect = (props) => {

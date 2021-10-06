@@ -1,5 +1,5 @@
-import MapSelection from "../subcomponents/MapSelection";
-import LeaderboardDiv from "../subcomponents/LeaderboardDiv";
+import MapSelection from "../subcomponents/homeComponents/MapSelection";
+import LeaderboardDiv from "../subcomponents/homeComponents/LeaderboardDiv";
 import Beach from "../../assets/maps/beach.jpg";
 import Carnival from "../../assets/maps/carnival.jpg";
 import Snow from "../../assets/maps/snow.jpg";

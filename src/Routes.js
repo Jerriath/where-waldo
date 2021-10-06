@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
 import Game from "./components/pageComponents/Game";
 import Leaderboard from "./components/pageComponents/Leaderboard";
 import Home from "./components/pageComponents/Home";
-import HomeLogo from "./components/subcomponents/HomeLogo";
+import HomeLogo from "./components/subcomponents/homeComponents/HomeLogo";
 import { Link } from "react-router-dom";
 import "./index.css";
 

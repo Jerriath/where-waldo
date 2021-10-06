@@ -1,6 +1,6 @@
-import Logo from "../../assets/misc/logo.png";
-import Waldo from  "../../assets/characters/waldo.png";
-import "../styles.css";
+import Logo from "../../../assets/misc/logo.png";
+import Waldo from  "../../../assets/characters/waldo.png";
+import "../../styles.css";
 
 
 

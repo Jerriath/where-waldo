@@ -4,8 +4,8 @@ import { createPointsArray, checkPointsArray } from "../HelperFunctions/gameFunc
 import { getDoc, doc } from "firebase/firestore";
 import { db } from "../../firebase-config.js";
 import Beach from "../../assets/maps/beach.jpg";
-import CharacterDropdown from "../subcomponents/CharacterDropdown";
-import StartGame from "../subcomponents/StartGame";
+import CharacterDropdown from "../subcomponents/gameComponents/CharacterDropdown";
+import StartGame from "../subcomponents/gameComponents/StartGame";
 
 
 
