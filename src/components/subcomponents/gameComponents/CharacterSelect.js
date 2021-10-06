@@ -8,7 +8,8 @@ const CharacterSelect = (props) => {
         await props.removeDropdown(props.pointsArray, props.name, props.map);
         let status = checkFoundArray(props.foundArray);
         if (status) {
-            props.getTotalTime(e);
+            let totalTime = props.getTotalTime(e);
+            props.displayEndMsg(totalTime);
         }
     }
 

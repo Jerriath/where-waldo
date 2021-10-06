@@ -7,6 +7,7 @@ import Beach from "../../assets/maps/beach.jpg";
 import CharacterDropdown from "../subcomponents/gameComponents/CharacterDropdown";
 import StartGame from "../subcomponents/gameComponents/StartGame";
 import Snackbar from "../subcomponents/gameComponents/Snackbar";
+import EndGameMsg from "../subcomponents/gameComponents/EndGameMsg";
 
 
 
@@ -20,6 +21,7 @@ const Game = () => {
 
     //These hooks are used in the return statement to append a component or to append null (e.g. StartGame or Snackbar; dropdown is set below)
     const [dropdown, setDropdown] = useState(null);
+    const [endGameMsg, setEndGameMsg] = useState(null);
     
 
     //These hooks are used to store important variables
@@ -45,7 +47,7 @@ const Game = () => {
     const getTotalTime = (e) => {
         const start = startTime;
         let totalTime = Math.floor(((e.timeStamp / 1000) - start) * 1000) / 1000;
-        console.log(totalTime);
+        return totalTime;
     }
 
 
@@ -133,7 +135,22 @@ const Game = () => {
 
     const appendDropdown = (e) => {
         const pointsArray = createPointsArray(e);
-        setDropdown(<CharacterDropdown getTotalTime={getTotalTime.bind(this)} map={map} removeDropdown={removeDropdown.bind(this)} foundArray={foundArray} xPos={e.clientX} yPos={e.clientY} pointsArray={pointsArray} />)
+        setDropdown(<CharacterDropdown 
+            getTotalTime={getTotalTime.bind(this)} 
+            removeDropdown={removeDropdown.bind(this)} 
+            displayEndMsg={displayEndMsg.bind(this)}
+            map={map} 
+            foundArray={foundArray} 
+            pointsArray={pointsArray}
+            xPos={e.clientX}  
+            yPos={e.clientY} />)
+    }
+
+
+
+
+    const displayEndMsg = (totalTime) => {
+        setEndGameMsg(<EndGameMsg totalTime={totalTime} />)
     }
 
 
@@ -143,6 +160,7 @@ const Game = () => {
         <div className="game" >
             <Snackbar holderClass={snackbarHolder} className={snackbarClass} msg={snackbarMsg} />
             {startGame}
+            {endGameMsg}
             <img className="gameLevel" alt="Map" src={level ? level:Beach} onClick={appendDropdown}/> 
             {dropdown}
         </div>
@@ -150,6 +168,3 @@ const Game = () => {
 }
 
 export default Game;
-
-
-//Got firebase to work; answers are now stored in answer variable in the clickHandler function

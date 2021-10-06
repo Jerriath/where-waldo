@@ -6,7 +6,7 @@ const StartGame = (props) => {
 
 
     return (
-        <div className="startGame" >
+        <div className="darkBackground" >
             <button className="startBtn" onClick={props.setStart} >Click To Begin!</button>
         </div>
     )

@@ -165,7 +165,7 @@
     font-size: 20px;
 }
 
-.startGame {
+.darkBackground {
     height: 130%;
     width: 100%;
     position: absolute;
@@ -242,4 +242,82 @@
     left: 0;
     right: 0;
     margin: 4%;
+}
+
+.endGameMsgHolder {
+    padding: 2% 0;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 7em;
+    width: 14em;
+    font-size: 2em;
+    border-radius: 20px;
+    border: none;
+    background-color: rgb(121, 121, 233);
+    transition: all 0.2s linear;
+    box-shadow: 3px 3px 3px black;
+}
+
+.endGameMsg {
+    margin: 0 5%;
+    text-align: center;
+    color: black;
+}
+
+.endBtnHolder {
+    margin: auto;
+    margin-top: 5%;
+    width: 50%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.endBtnRed {
+    background: rgb(192, 51, 51);
+    height: 3em;
+    width: 6em;
+    border: 1px solid black;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.endBtnGreen {
+    background: rgb(69, 201, 52);
+    height: 3em;
+    width: 6em;
+    border: 1px solid black;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.endBtn {
+    transition: all 0.2s linear;
+}
+
+.endBtn:hover {
+    box-shadow: 3px 3px 3px black;
+}
+
+.nameInput {
+    text-align: center;
+    height: 1.5em;
+    width: 10em;
+    font-size: 1em;
+    transition: all 0.2s linear;
+    border: none;
+}
+
+.nameInput:hover {
+    border: none;
+}
+
+.inputHolder {
+    width: auto;
+    text-align: center;
+    margin: 8% 0;
 }
