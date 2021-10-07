@@ -1,16 +1,19 @@
 import { useState } from "react";
+import uniqid from "uniqid";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../firebase-config.js";
+import { processScores } from "../HelperFunctions/leaderboardFunctions";
 import PlayerList from "../subcomponents/leaderboardComponents/PlayerList";
 import SidePanel from "../subcomponents/leaderboardComponents/SidePanel";
+import PlayerScore from "../subcomponents/leaderboardComponents/PlayerScore";
 
 
 
 const Leaderboard = () => {
 
     //This hook is used to display the PlayerList component; this component depends on what the user clicks on the SidePanel so it will be set after that first click
-    const [level, setLevel] = useState(null);
-    const [scoreList, setScoreList] = useState(null);
+    const [level, setLevel] = useState("");
+    const [scoreList, setScoreList] = useState([]);
 
 
 
@@ -25,9 +28,16 @@ const Leaderboard = () => {
     }
 
     const selectLevel = async (e) => {
-        let level = e.target.name;
-        const scoreList = await fetchScores(level);
-        await setScoreList(scoreList);
+        let newLevel = e.target.name;
+        setLevel(newLevel);
+        const query = await fetchScores(newLevel);
+        let newScoreList = await processScores(query);
+        console.log(newScoreList);
+        newScoreList = newScoreList.map( (score) => {
+            return <PlayerScore name={score.name} time={score.time} key={uniqid()} />
+        })
+        console.log(newScoreList);
+        setScoreList(newScoreList);
     }
 
 
