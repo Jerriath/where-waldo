@@ -5,19 +5,20 @@ import Carnival from "../../assets/maps/carnival.jpg";
 import Snow from "../../assets/maps/snow.jpg";
 import Space from "../../assets/maps/space.jpg";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 
 
 
-const MapSelect = () => {
+const Home = () => {
 
-
+    const [maps, setMaps] = useState([null, null, null, null]);
 
     return (
         <div className="home">
             <div className="mapSelect" >
                 <Link to={{
-                    //The to attribute for the link tag is used to store the level image in order to update the image source of the /Game page
+                    //The "to" attribute for the link tag is used to store the level image in order to update the image source of the /Game page
                     pathname: "/Game",
                     state: {
                         level: Beach,
@@ -60,4 +61,4 @@ const MapSelect = () => {
     )
 }
 
-export default MapSelect;
+export default Home;
