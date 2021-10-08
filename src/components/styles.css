@@ -365,7 +365,7 @@
     text-align: center;
     margin-left: 5%;
     margin-top: 1%;
-    background-color:rgba(139, 139, 236, 0.3)
+    background: linear-gradient(rgb(178, 178, 247), white)
 }
 
 .sidePanelTitle {
@@ -425,6 +425,7 @@
     margin-right: 5%;
     border: 1px solid black;
     border-radius: 20px;
+    background: linear-gradient(rgb(252, 161, 161), white);
 }
 
 .playerScore {
@@ -444,7 +445,7 @@
 }
 
 .playerName {
-    width: 70%;
+    width: 69%;
     text-align: left;
     margin-left: 5%;
     padding-left: 1%;
@@ -460,6 +461,27 @@
     margin-right: 5%;
     border-left: 1px solid grey;
     background-color: lightgrey;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.legendName {
+    width: 69%;
+    text-align: left;
+    margin-left: 5%;
+    padding-left: 1%;
+    border-right: 1px solid black;
+    background-color: rgb(134, 134, 134);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+.legendTime {
+    width: 20%;
+    text-align: center;
+    margin-right: 5%;
+    border-left: 1px solid rgb(0, 0, 0);
+    background-color: rgb(134, 134, 134);
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
 }

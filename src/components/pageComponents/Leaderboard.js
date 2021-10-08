@@ -32,11 +32,9 @@ const Leaderboard = () => {
         setLevel(newLevel);
         const query = await fetchScores(newLevel);
         let newScoreList = await processScores(query);
-        console.log(newScoreList);
         newScoreList = newScoreList.map( (score) => {
             return <PlayerScore name={score.name} time={score.time} key={uniqid()} />
         })
-        console.log(newScoreList);
         setScoreList(newScoreList);
     }
 

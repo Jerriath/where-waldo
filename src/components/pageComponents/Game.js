@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { createPointsArray, checkPointsArray } from "../HelperFunctions/gameFunctions";
-import { getDoc, doc } from "firebase/firestore";
+import { getDoc, setDoc, doc } from "firebase/firestore";
 import { db } from "../../firebase-config.js";
 import Beach from "../../assets/maps/beach.jpg";
 import CharacterDropdown from "../subcomponents/gameComponents/CharacterDropdown";
 import StartGame from "../subcomponents/gameComponents/StartGame";
 import Snackbar from "../subcomponents/gameComponents/Snackbar";
 import EndGameMsg from "../subcomponents/gameComponents/EndGameMsg";
+import PostScoreMsg from "../subcomponents/gameComponents/PostScoreMsg";
 
 
 
@@ -22,6 +23,7 @@ const Game = () => {
     //These hooks are used in the return statement to append a component or to append null (e.g. StartGame or Snackbar; dropdown is set below)
     const [dropdown, setDropdown] = useState(null);
     const [endGameMsg, setEndGameMsg] = useState(null);
+    const [postScoreMsg, setPostScoreMsg] = useState(null);
     
 
     //These hooks are used to store important variables
@@ -30,6 +32,7 @@ const Game = () => {
     const [snackbarClass, setSnackbarClass] = useState("snackbarFound");
     const [snackbarMsg, setSnackbarMsg] = useState("");
     const [snackbarHolder, setSnackbarHolder] = useState("snackbarHidden");
+    const [playerName, setPlayerName] = useState("");
 
 
 
@@ -77,9 +80,6 @@ const Game = () => {
             console.log("A weird error occured. Get it away!", error);
         }
     }
-
-
-
 
     //Functions that deal with the dropdown list of characters
     const removeDropdown = async (pointsArray, character, map) => {
@@ -131,7 +131,7 @@ const Game = () => {
 
         
         setDropdown(null);
-    } //This is just here for testing rn; later this function will be the one to send the request to the backend and check the pointsArray against the answers
+    }
 
     const appendDropdown = (e) => {
         const pointsArray = createPointsArray(e);
@@ -149,8 +149,22 @@ const Game = () => {
 
 
 
+    const postScore = async (name, time, map) => {
+        let docRef = doc(db, map, name);
+        await setDoc(docRef, {
+            time: time
+        });
+    }
+
+    const yesHandler = (totalTime) => {
+        setEndGameMsg(null);
+        setPostScoreMsg(
+            <PostScoreMsg totalTime={totalTime} map={map} postScore={postScore} />
+        );
+    }
+
     const displayEndMsg = (totalTime) => {
-        setEndGameMsg(<EndGameMsg totalTime={totalTime} />)
+        setEndGameMsg(<EndGameMsg yesHandler={yesHandler} map={map} totalTime={totalTime} />)
     }
 
 
@@ -161,10 +175,11 @@ const Game = () => {
             <Snackbar holderClass={snackbarHolder} className={snackbarClass} msg={snackbarMsg} />
             {startGame}
             {endGameMsg}
+            {postScoreMsg}
             <img className="gameLevel" alt="Map" src={level ? level:Beach} onClick={appendDropdown}/> 
             {dropdown}
         </div>
-    )//The ternary statement used in the src attribute is there so that if someone routed to /Game without clicking a MapSelection, the defaul level will the level 1
+    )//The ternary statement used in the src attribute is there so that if someone routed to /Game without clicking a MapSelection, the defaul level will be level 1
 }
 
 export default Game;
