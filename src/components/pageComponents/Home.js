@@ -5,7 +5,6 @@ import Carnival from "../../assets/maps/carnival.jpg";
 import Snow from "../../assets/maps/snow.jpg";
 import Space from "../../assets/maps/space.jpg";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
 
 
 
@@ -13,11 +12,6 @@ import { useState, useEffect } from "react";
 
 const Home = () => {
 
-    const [maps, setMaps] = useState([null, null, null, null]);
-
-    useEffect(
-
-    )
 
     return (
         <div className="home">
