@@ -32,7 +32,6 @@ const Game = () => {
     const [snackbarClass, setSnackbarClass] = useState("snackbarFound");
     const [snackbarMsg, setSnackbarMsg] = useState("");
     const [snackbarHolder, setSnackbarHolder] = useState("snackbarHidden");
-    const [playerName, setPlayerName] = useState("");
 
 
 

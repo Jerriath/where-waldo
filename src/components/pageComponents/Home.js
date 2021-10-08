@@ -10,9 +10,14 @@ import { useState, useEffect } from "react";
 
 
 
+
 const Home = () => {
 
     const [maps, setMaps] = useState([null, null, null, null]);
+
+    useEffect(
+
+    )
 
     return (
         <div className="home">
